@@ -81,27 +81,10 @@ impl Cropper {
         target_width: u32,
         target_height: u32,
     ) -> Geometry {
+        let val = val as u32;
         let (x, y) = match direction {
-            Direction::X => {
-                let max_: f64 = val + f64::from(target_width);
-                if val < 0.0 {
-                    (0, 0)
-                } else if max_ > self.width.into() {
-                    (self.width - target_width, 0)
-                } else {
-                    (val as u32, 0)
-                }
-            }
-            Direction::Y => {
-                let max_ = val + f64::from(target_height);
-                if val < 0.0 {
-                    (0, 0)
-                } else if max_ > self.height.into() {
-                    (0, self.height - target_height)
-                } else {
-                    (0, val as u32)
-                }
-            }
+            Direction::X => (val.clamp(0, self.width - target_width), 0),
+            Direction::Y => (0, val.clamp(0, self.height - target_height)),
         };
 
         Geometry {
