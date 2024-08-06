@@ -4,6 +4,7 @@ use std::path::PathBuf;
 
 use wallpaper_ui::{
     aspect_ratio::AspectRatio,
+    cli::FacesFilter,
     cli::WallpaperUIArgs,
     config::WallpaperConfig,
     cropper::Direction,
@@ -179,12 +180,11 @@ impl Wallpapers {
                     return info.is_default_crops(&unmodified_filters);
                 }
 
-                return match args.faces.as_str() {
-                    "all" => true,
-                    "zero" | "none" => info.faces.is_empty(),
-                    "one" | "single" => info.faces.len() == 1,
-                    "many" | "multiple" => info.faces.len() > 1,
-                    _ => panic!("Invalid faces : {}", args.faces),
+                return match args.faces {
+                    FacesFilter::All => true,
+                    FacesFilter::Zero | FacesFilter::None => info.faces.is_empty(),
+                    FacesFilter::One | FacesFilter::Single => info.faces.len() == 1,
+                    FacesFilter::Many | FacesFilter::Multiple => info.faces.len() > 1,
                 };
             }
             true

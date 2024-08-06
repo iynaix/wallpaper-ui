@@ -2980,9 +2980,9 @@ checksum = "650eef8c711430f1a879fdd01d4745a7deea475becfb90269c06775983bbf086"
 
 [[package]]
 name = "new_string_template"
-version = "1.5.1"
+version = "1.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ae40f3a13799cd6700ae77842b8c57e678a62f9c69105705660cea46083acf2e"
+checksum = "c50f1853334c9e52f86afb63aa2fbfd45e17535ce7fc976105e7636c94e975eb"
 dependencies = [
  "lazy_static",
  "regex",
@@ -3828,9 +3828,9 @@ dependencies = [
 
 [[package]]
 name = "regex"
-version = "1.10.5"
+version = "1.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b91213439dad192326a0d7c6ee3955910425f441d7038e0d6933b0aec5c4517f"
+checksum = "4219d74c6b67a3654a9fbebc4b419e22126d13d2f3c4a07ee0cb61ff79a79619"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -5101,8 +5101,9 @@ dependencies = [
 
 [[package]]
 name = "wallust"
-version = "3.0.0-beta"
-source = "git+https://codeberg.org/explosion-mental/wallust.git?branch=dev#ef2e55939a18c4a745c8fcd787bc91b08f7195b3"
+version = "3.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "145ca5f09aa4905484541f7b68777097aa277b9ba6565f0ff17699c2a9e19767"
 dependencies = [
  "anyhow",
  "clap",

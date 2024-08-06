@@ -1,8 +1,19 @@
 use std::path::PathBuf;
 
-use clap::{builder::PossibleValuesParser, Parser};
+use clap::{builder::PossibleValuesParser, value_parser, Parser, ValueEnum};
 
 // ------------------------- WALLPAPER UI -------------------------
+#[derive(ValueEnum, Debug, Clone)]
+pub enum FacesFilter {
+    Zero,
+    None,
+    One,
+    Single,
+    Many,
+    Multiple,
+    All,
+}
+
 #[allow(clippy::struct_excessive_bools)]
 #[derive(Parser, Debug)]
 #[command(
@@ -37,18 +48,10 @@ pub struct WallpaperUIArgs {
         long,
         default_value = "all",
         default_missing_value = "all",
-        value_parser = PossibleValuesParser::new([
-            "zero",
-            "none",
-            "one",
-            "single",
-            "many",
-            "multiple",
-            "all",
-        ]),
+        value_parser = value_parser!(FacesFilter),
         help = "only show wallpapers that have a palette"
     )]
-    pub faces: String,
+    pub faces: FacesFilter,
 
     #[arg(long, help = "filters wallpapers by filename (case-insensitive)")]
     pub filter: Option<String>,

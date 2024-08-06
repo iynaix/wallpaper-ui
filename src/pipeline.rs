@@ -205,7 +205,7 @@ impl WallpaperPipeline {
         let out_path = self
             .format
             .as_ref()
-            .map_or_else(|| img.clone(), |ext| img.with_extension(ext))
+            .map_or_else(|| img.clone(), |ext| img.with_extension(ext.as_str()))
             .with_directory(&self.wall_dir);
 
         if out_path.exists() && !force {
